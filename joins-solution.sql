@@ -48,7 +48,20 @@ WHERE "products".description = 'cheetos'
 ORDER BY "warehouse".id ASC;
 
 -- 4. Which warehouses have diet pepsi?
+-- Basic
+SELECT * FROM "warehouse"
+JOIN "warehouse_product" ON "warehouse_product".warehouse_id = "warehouse".id
+JOIN "products" ON "products".id = "warehouse_product".product_id;
 
+-- Cleaner
+SELECT
+	"warehouse".warehouse,
+	"products".description
+FROM "warehouse"
+JOIN "warehouse_product" ON "warehouse_product".warehouse_id = "warehouse".id
+JOIN "products" ON "products".id = "warehouse_product".product_id
+WHERE "products".description = 'diet pepsi'
+ORDER BY "warehouse".id ASC;
 
 -- 5. Get the number of orders for each customer.
 
