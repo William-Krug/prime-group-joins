@@ -74,7 +74,7 @@ GROUP BY "customers".first_name
 ORDER BY "customers".first_name ASC;
 
 -- 6. How many customers do we have?
-
+SELECT count("customers".id) as "total_customers" FROM "customers";
 
 -- 7. How many products do we carry?
 
