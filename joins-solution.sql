@@ -1,5 +1,4 @@
 -- 1. Get all customers and their addresses.
-
 -- Basic
 SELECT * FROM "customers"
 JOIN "addresses" on "addresses".customer_id = "customers".id;
@@ -33,7 +32,20 @@ JOIN "products" ON "products".id = "line_items".product_id;
 
 
 -- 3. Which warehouses have cheetos?
+-- Basic
+SELECT * FROM "warehouse"
+JOIN "warehouse_product" ON "warehouse_product".warehouse_id = "warehouse".id
+JOIN "products" ON "products".id = "warehouse_product".product_id;
 
+-- Cleaner
+SELECT
+	"warehouse".warehouse,
+	"products".description
+FROM "warehouse"
+JOIN "warehouse_product" ON "warehouse_product".warehouse_id = "warehouse".id
+JOIN "products" ON "products".id = "warehouse_product".product_id
+WHERE "products".description = 'cheetos'
+ORDER BY "warehouse".id ASC;
 
 -- 4. Which warehouses have diet pepsi?
 
