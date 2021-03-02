@@ -64,7 +64,14 @@ WHERE "products".description = 'diet pepsi'
 ORDER BY "warehouse".id ASC;
 
 -- 5. Get the number of orders for each customer.
-
+SELECT
+	"customers".first_name,
+	count("orders".id)
+FROM "customers"
+JOIN "addresses" ON "addresses".customer_id = "customers".id
+JOIN "orders" ON "orders".address_id = "addresses".id
+GROUP BY "customers".first_name 
+ORDER BY "customers".first_name ASC;
 
 -- 6. How many customers do we have?
 
