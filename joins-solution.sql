@@ -77,7 +77,7 @@ ORDER BY "customers".first_name ASC;
 SELECT count("customers".id) as "total_customers" FROM "customers";
 
 -- 7. How many products do we carry?
-
+SELECT count("products".id) as "total_number_products" from "products";
 
 -- 8. What is the total available on-hand quanitity of diet pepsi?
 
