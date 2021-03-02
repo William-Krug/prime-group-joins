@@ -84,12 +84,9 @@ ORDER BY "orders".id ASC;
 
 
 --- 10. How much has each customer spent in total?
--- Unfinished
 SELECT
 	"customers".first_name,
-	-- SUM(SUM("line_items".quantity * "products".unit_price)) as "total_order_cost"
-	SUM("line_items".quantity * "products".unit_price) as "total_order_cost",
-	SUM("total_order_cost") as "total_customer_cost"
+	SUM("line_items".quantity * "products".unit_price) as "total_customer_cost"
 FROM "customers"
 JOIN "addresses" ON "addresses".customer_id = "customers".id
 JOIN "orders" ON "orders".address_id = "addresses".id
