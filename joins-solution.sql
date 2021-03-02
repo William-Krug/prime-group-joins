@@ -80,7 +80,13 @@ SELECT count("customers".id) as "total_customers" FROM "customers";
 SELECT count("products".id) as "total_number_products" from "products";
 
 -- 8. What is the total available on-hand quanitity of diet pepsi?
-
+SELECT
+	"products".description,
+	SUM("warehouse_product".on_hand) as "total_on_hand"
+FROM "products"
+JOIN "warehouse_product" ON "warehouse_product".product_id = "products".id
+WHERE "products".description = 'diet pepsi'
+GROUP BY "products".description;
 
 --- 9. How much was the total cost for each order?
 
