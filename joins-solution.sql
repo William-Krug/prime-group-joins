@@ -1,4 +1,10 @@
 -- 1. Get all customers and their addresses.
+
+-- Basic
+SELECT * FROM "customers"
+JOIN "addresses" on "addresses".customer_id = "customers".id;
+
+-- Cleaner
 SELECT
 	"customers".first_name,
 	"customers".last_name,
@@ -9,3 +15,45 @@ SELECT
 	"addresses".address_type
 FROM "customers"
 JOIN "addresses" on "addresses".customer_id = "customers".id;
+
+-- 2. Get all orders and their line items (orders, quantity and product).
+-- Basic
+SELECT * FROM "orders"
+JOIN "line_items" ON "line_items".order_id = "orders".id
+JOIN "products" ON "products".id = "line_items".product_id;
+
+-- Cleaner
+SELECT
+	"orders".order_date,
+	"products".description,
+	"line_items".quantity
+FROM "orders"
+JOIN "line_items" ON "line_items".order_id = "orders".id
+JOIN "products" ON "products".id = "line_items".product_id;
+
+
+-- 3. Which warehouses have cheetos?
+
+
+-- 4. Which warehouses have diet pepsi?
+
+
+-- 5. Get the number of orders for each customer.
+
+
+-- 6. How many customers do we have?
+
+
+-- 7. How many products do we carry?
+
+
+-- 8. What is the total available on-hand quanitity of diet pepsi?
+
+
+--- 9. How much was the total cost for each order?
+
+
+--- 10. How much has each customer spent in total?
+
+
+--- 11. How much has each customer spent in total? (not NULL)
